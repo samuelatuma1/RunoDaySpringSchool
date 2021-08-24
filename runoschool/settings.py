@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'storages',
     'django_cleanup.apps.CleanupConfig'
 ]
 
@@ -136,8 +137,8 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-MEDIA_ROOT = BASE_DIR/'media'
-MEDIA_URL = '/media/'
+# MEDIA_ROOT = BASE_DIR/'media'
+# MEDIA_URL = '/media/'
 
 LOGIN_REDIRECT_URL = 'runo:index'
 LOGIN_URL = 'runo:login'
@@ -158,3 +159,20 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'runo.authentication.EmailAuth'
 ]
+
+
+# DEFAULT_FILE_STORAGE = 'runo.custom_azure.py.AzureMediaStorage'
+DEFAULT_FILE_STORAGE = 'storages.backends.azure_storage.AzureStorage'
+# STATICFILES_STORAGE = 'backend.custom_azure.AzureStaticStorage'
+
+# STATIC_LOCATION = "static"
+MEDIA_LOCATION = "media"
+
+AZURE_ACCOUNT_NAME = "runodayspring"
+account_name = 'runodayspring' # Must be replaced by your <storage_account_name>
+AZURE_ACCOUNT_KEY = 'yHMZWoaup9QJmuhIiGxqVE+ScKW/KwUoIXt1PMtFOJ/T37USsmvU3QURUydIO511KU39/tCzTooMtrwPFBajsw==' # Must be replaced by your <storage_account_key>
+AZURE_CONTAINER = 'media'
+
+AZURE_CUSTOM_DOMAIN = f'{AZURE_ACCOUNT_NAME}.blob.core.windows.net'
+# STATIC_URL = f'https://{AZURE_CUSTOM_DOMAIN}/{STATIC_LOCATION}/'
+MEDIA_URL = f'https://{AZURE_CUSTOM_DOMAIN}/{MEDIA_LOCATION}/'
