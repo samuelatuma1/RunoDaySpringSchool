@@ -160,6 +160,7 @@ AUTHENTICATION_BACKENDS = [
     'runo.authentication.EmailAuth'
 ]
 
+#hello
 
 # DEFAULT_FILE_STORAGE = 'runo.custom_azure.py.AzureMediaStorage'
 DEFAULT_FILE_STORAGE = 'storages.backends.azure_storage.AzureStorage'
