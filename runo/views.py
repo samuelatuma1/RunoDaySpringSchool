@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import get_object_or_404
 import datetime
 from django.core.mail import send_mail
-
+     
 from .models import Intro, News, ImportantDates, FooterDetails, Gallery, AboutSchool, Academics, UserClass, Result, AllResults
 from .models import UserProfile, Message
 from .forms import UserClassName, UserProfileForm
