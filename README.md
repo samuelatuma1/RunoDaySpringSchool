@@ -24,8 +24,7 @@
   <header>About </header>
   <main>
       <p>
-        This application serves the need of a school website as well as a school management system.
-        
+        This application serves the need of a school website as well as a school management system.  
       </p>
       <ul>
         It provides interface for
