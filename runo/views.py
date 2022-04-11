@@ -9,6 +9,7 @@ from .models import UserProfile, Message
 from .forms import UserClassName, UserProfileForm
 from django.db.models import Q
 
+from django.contrib.admin.views.decorators import staff_member_required
 # Create your views here.
 
 #def searchBase(request):
@@ -136,7 +137,8 @@ Content_type = ContentType.objects.get_for_model(Users)
 pupil_permission = Permission.objects.filter(codename='is_pupil', name='is_pupil', content_type=Content_type).first()
 pupil_group.permissions.add(pupil_permission)
 
-#@staff_member_required
+
+@staff_member_required
 def register(request):
     form = Register()
     form2 = UserClassName()
@@ -544,9 +546,8 @@ def viewResults(request, Class=None):
     
 
 
-from django.contrib.admin.views.decorators import staff_member_required
 
-#@staff_member_required
+@staff_member_required
 def msg_for_admin(request, id=None):
     try:
         aboutSchool = FooterDetails.objects.all().order_by('-id')[0] 
@@ -572,7 +573,7 @@ def msg_for_admin(request, id=None):
     except:
         pass
 
-#@staff_member_required
+@staff_member_required
 def msg_for_admin2(request):
     try:
         aboutSchool = FooterDetails.objects.all().order_by('-id')[0] 
@@ -590,8 +591,8 @@ def msg_for_admin2(request):
     except:
         return HttpResponseRedirect(reverse('runo:index'))
     
-#@staff_member_required   
 from django.db.models import Q
+@staff_member_required   
 def admin_update_user(request, username):
     try:
         aboutSchool = FooterDetails.objects.all().order_by('-id')[0] 
@@ -682,6 +683,7 @@ def change_password(request):
 
 
 from django.contrib import admin
+@staff_member_required
 def adminPanel(request):
     try:
         aboutSchool = FooterDetails.objects.all().order_by('-id')[0] 
@@ -700,7 +702,7 @@ def adminPanel(request):
     
 
 from .models import MessageAllUsers
-#@staff_member_required   
+@staff_member_required   
 def message_all_users(request):
     
     if request.method == 'POST':

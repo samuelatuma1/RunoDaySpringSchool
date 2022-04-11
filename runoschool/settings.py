@@ -78,10 +78,14 @@ WSGI_APPLICATION = 'runoschool.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
+    # If you want to use the default database engine, uncomment the following line:
+    
     # 'default': {
     #     'ENGINE': 'django.db.backends.sqlite3',
     #     'NAME': BASE_DIR / 'db.sqlite3',
     # }
+    
+    # Please, comment out the following line if you want to use the default database engine.
     "default": {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'runodayspring3',
@@ -137,8 +141,8 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-# MEDIA_ROOT = BASE_DIR/'media'
-# MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR/'media'
+MEDIA_URL = '/media/'
 
 LOGIN_REDIRECT_URL = 'runo:index'
 LOGIN_URL = 'runo:login'
@@ -146,11 +150,11 @@ LOGOUT_URL = 'runo:logout'
 
 if not DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-    EMAIL_HOST_USER = 'okparasaake@gmail.com'
+    EMAIL_HOST_USER = 'yourmail@gmail.com'
     EMAIL_HOST = 'smtp.gmail.com'
     EMAIL_PORT = 587
     EMAIL_USE_TSL = True
-    EMAIL_HOST_PASSWORD = '0n1yMeKn0wo.'
+    EMAIL_HOST_PASSWORD = 'yourPassword for email'
     
 else:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
@@ -160,20 +164,20 @@ AUTHENTICATION_BACKENDS = [
     'runo.authentication.EmailAuth'
 ]
 
-#hello
+
 
 # DEFAULT_FILE_STORAGE = 'runo.custom_azure.py.AzureMediaStorage'
-DEFAULT_FILE_STORAGE = 'storages.backends.azure_storage.AzureStorage'
-# STATICFILES_STORAGE = 'backend.custom_azure.AzureStaticStorage'
+# DEFAULT_FILE_STORAGE = 'storages.backends.azure_storage.AzureStorage'
+# # STATICFILES_STORAGE = 'backend.custom_azure.AzureStaticStorage'
 
-# STATIC_LOCATION = "static"
-MEDIA_LOCATION = "media"
+# # STATIC_LOCATION = "static"
+# MEDIA_LOCATION = "media"
 
-AZURE_ACCOUNT_NAME = "runodayspring"
-account_name = 'runodayspring' # Must be replaced by your <storage_account_name>
-AZURE_ACCOUNT_KEY = 'yHMZWoaup9QJmuhIiGxqVE+ScKW/KwUoIXt1PMtFOJ/T37USsmvU3QURUydIO511KU39/tCzTooMtrwPFBajsw==' # Must be replaced by your <storage_account_key>
-AZURE_CONTAINER = 'media'
+# AZURE_ACCOUNT_NAME = "your_account_name"
+# account_name = 'Must be replaced by your <storage_account_name>' # 
+# AZURE_ACCOUNT_KEY = 'Must be replaced by your <storage_account_key>' 
+# AZURE_CONTAINER = 'media'
 
-AZURE_CUSTOM_DOMAIN = f'{AZURE_ACCOUNT_NAME}.blob.core.windows.net'
-# STATIC_URL = f'https://{AZURE_CUSTOM_DOMAIN}/{STATIC_LOCATION}/'
-MEDIA_URL = f'https://{AZURE_CUSTOM_DOMAIN}/{MEDIA_LOCATION}/'
+# AZURE_CUSTOM_DOMAIN = f'{AZURE_ACCOUNT_NAME}.blob.core.windows.net'
+# # STATIC_URL = f'https://{AZURE_CUSTOM_DOMAIN}/{STATIC_LOCATION}/'
+# MEDIA_URL = f'https://{AZURE_CUSTOM_DOMAIN}/{MEDIA_LOCATION}/'
