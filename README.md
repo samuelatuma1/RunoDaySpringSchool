@@ -19,14 +19,14 @@
   </ul>
 
   <p>Create a .env file on the root folder.</p>
-  Here is the content of the .env file
+  Here is the example content of the .env file
   <ul style='background-color : grey; padding : 10px;'>
-    SECRET_KEY = 'django-insecure-oabe-2rg*#fwz+vk&wxjricrl6i8j+jiy3(+ju9@jb7qw#-#(!'
-    DB_NAME = 'runodayspring3'
-    DB_PASSWORD = '11235813'
-    DB_USER = 'runodayspring'
-    EMAIL_HOST_USER = 'atumasaake@gmail.com'
-    EMAIL_HOST_PASSWORD = '11235813'
+    <p>SECRET_KEY = 'secret_key_only_me_know'</p>
+    <p>DB_NAME = 'db_name'</p>
+    <p>DB_PASSWORD = '12345'</p>
+    <p>DB_USER = 'db_user'</p>
+    <p>EMAIL_HOST_USER = 'emailusername'</p>
+    <p>EMAIL_HOST_PASSWORD = 'email Password'</p>
   </ul>
 
 
