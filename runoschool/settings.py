@@ -9,8 +9,15 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
+# dotenv Setup
+from dotenv import load_dotenv
+load_dotenv()
+import os
 
 from pathlib import Path
+
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-oabe-2rg*#fwz+vk&wxjricrl6i8j+jiy3(+ju9@jb7qw#-#(!'
+SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -80,20 +87,20 @@ WSGI_APPLICATION = 'runoschool.wsgi.application'
 DATABASES = {
     # If you want to use the default database engine, uncomment the following line:
     
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': BASE_DIR / 'db.sqlite3',
-    # }
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
     
     # Please, comment out the following line if you want to use the default database engine.
-    "default": {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'runodayspring3',
-        'PASSWORD': '11235813',
-        'USER': 'runodayspring',
-        'HOST': 'localhost',
-        'PORT': '5432'
-    }
+    # "default": {
+    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #     'NAME': str(os.getenv('DB_NAME')),
+    #     'PASSWORD': str(os.getenv('DB_PASSWORD')),
+    #     'USER': str(os.getenv('DB_USER')),
+    #     'HOST': 'localhost',
+    #     'PORT': '5432'
+    # }
 }
 
 
@@ -150,11 +157,11 @@ LOGOUT_URL = 'runo:logout'
 
 if not DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-    EMAIL_HOST_USER = 'yourmail@gmail.com'
+    EMAIL_HOST_USER = str(os.getenv('EMAIL_HOST_USER'))
     EMAIL_HOST = 'smtp.gmail.com'
     EMAIL_PORT = 587
     EMAIL_USE_TSL = True
-    EMAIL_HOST_PASSWORD = 'yourPassword for email'
+    EMAIL_HOST_PASSWORD = str(os.getenv('EMAIL_HOST_PASSWORD'))
     
 else:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

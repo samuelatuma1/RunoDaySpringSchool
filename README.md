@@ -18,6 +18,16 @@
     <li>python manage.py createsuperuser</li>
   </ul>
 
+  <p>Create a .env file on the root folder.</p>
+  Here is the content of the .env file
+  <ul style='background-color : grey; padding : 10px;'>
+    SECRET_KEY = 'django-insecure-oabe-2rg*#fwz+vk&wxjricrl6i8j+jiy3(+ju9@jb7qw#-#(!'
+    DB_NAME = 'runodayspring3'
+    DB_PASSWORD = '11235813'
+    DB_USER = 'runodayspring'
+    EMAIL_HOST_USER = 'atumasaake@gmail.com'
+    EMAIL_HOST_PASSWORD = '11235813'
+  </ul>
 
 
 <section>

@@ -125,17 +125,21 @@ from .forms import Register
 teacher_group = None
 pupil_group = None
 # Uncommented teacher_group, pupil_group
-teacher_group, created = Group.objects.get_or_create(name='teacher_group')
-ct = ContentType.objects.get_for_model(Users)
-                
-permission = Permission.objects.filter(codename='is_teacher', name='is_teacher', content_type=ct).first()
-teacher_group.permissions.add(permission)
+try:
+    teacher_group, created = Group.objects.get_or_create(name='teacher_group')
+    ct = ContentType.objects.get_for_model(Users)
+                    
+    permission = Permission.objects.filter(codename='is_teacher', name='is_teacher', content_type=ct).first()
+    teacher_group.permissions.add(permission)
 
 
-pupil_group, created = Group.objects.get_or_create(name='pupil_group')
-Content_type = ContentType.objects.get_for_model(Users)
-pupil_permission = Permission.objects.filter(codename='is_pupil', name='is_pupil', content_type=Content_type).first()
-pupil_group.permissions.add(pupil_permission)
+    pupil_group, created = Group.objects.get_or_create(name='pupil_group')
+    Content_type = ContentType.objects.get_for_model(Users)
+    pupil_permission = Permission.objects.filter(codename='is_pupil', name='is_pupil', content_type=Content_type).first()
+    pupil_group.permissions.add(pupil_permission)
+except:
+    pass
+
 
 
 @staff_member_required
@@ -265,7 +269,11 @@ def teacher(request):
         
         return render(request, 'runo/sms/class.html', context)
     except:
-        return HttpResponse('User Does not Have a specified class')
+        href = reverse('runo:login')
+        errorMsg = 'You are not authorized to access teachers data. Login with the authorized user to do this.'
+        return render(request, 'error.html', {'errorMsg': errorMsg, 'href': href})
+    
+        
     
     
 
